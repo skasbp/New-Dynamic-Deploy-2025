@@ -27,4 +27,4 @@ jobs:
         scp -r . ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/home/ubuntu/app
         ssh ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "cd /home/ubuntu/app && python3 install_nginx.py"
         ssh ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "cd /home/ubuntu/app && python3 setup_nginx.py ${{ env.DOMAIN_NAME }}"
-        ssh ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "cd /home/ubuntu/app && npm install && npm start"
+        ssh ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "cd /home/ubuntu/app && npm install && nohup npm start &"
